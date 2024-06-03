@@ -37,4 +37,24 @@ public class SuiteTest
 
     Assert.Equal(expected, suite.Number);
   }
+
+  [Fact]
+  public void CannotSetANegativeDailyPrice()
+  {
+    Suite suite = new Suite();
+    decimal nonExpectedPrice = -1.5M;
+
+    Assert.Throws<ArgumentException>(() => suite.DailyPrice = nonExpectedPrice);
+  }
+
+  [Fact]
+  public void CanAssignAValidDailyPrice()
+  {
+    Suite suite = new Suite();
+    decimal expectedPrice = 1.5M;
+
+    suite.DailyPrice = expectedPrice;
+
+    Assert.Equal(expectedPrice, suite.DailyPrice);
+  }
 }

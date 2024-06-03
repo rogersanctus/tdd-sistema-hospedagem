@@ -4,6 +4,7 @@ public class Suite
 {
   private int _Capacity;
   private int _Number;
+  private decimal _DailyPrice;
 
   public int Number
   {
@@ -30,6 +31,20 @@ public class Suite
       }
 
       _Capacity = value;
+    }
+  }
+
+  public decimal DailyPrice
+  {
+    get => _DailyPrice;
+    set
+    {
+      if (value < 0)
+      {
+        throw new ArgumentException("Daily price cannot be negative");
+      }
+
+      _DailyPrice = value;
     }
   }
 }
