@@ -41,4 +41,24 @@ public class GuestTest
 
     Assert.Equal(expectedName, guest.LastName);
   }
+
+  [Fact]
+  public void CannotRetrieveFullNameWhenFirstNameOrLastNameIsEmpty()
+  {
+    Guest guest = new Guest();
+
+    Assert.Throws<ArgumentException>(() => guest.FullName);
+  }
+
+  [Fact]
+  public void CanRetrieveFullNameProperly()
+  {
+    Guest guest = new Guest();
+    string expectedFullName = "John Doe";
+
+    guest.FirstName = "John";
+    guest.LastName = "Doe";
+
+    Assert.Equal(expectedFullName, guest.FullName);
+  }
 }

@@ -32,4 +32,17 @@ public class Guest
       _LastName = value;
     }
   }
+
+  public string FullName
+  {
+    get
+    {
+      if (string.IsNullOrEmpty(FirstName) || string.IsNullOrEmpty(LastName))
+      {
+        throw new ArgumentException("Either FirstName or LastName is null or empty");
+      }
+
+      return FirstName + " " + LastName;
+    }
+  }
 }
