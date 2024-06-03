@@ -61,4 +61,33 @@ public class GuestTest
 
     Assert.Equal(expectedFullName, guest.FullName);
   }
+
+  [Fact]
+  public void CannotAssignAUsernameWithLessThanThreeCharacters()
+  {
+    Guest guest = new Guest();
+    string userName = "gu";
+
+    Assert.Throws<ArgumentException>(() => guest.Username = userName);
+  }
+
+  [Fact]
+  public void CannotAssignAnEmptyUsername()
+  {
+    Guest guest = new Guest();
+    string userName = "";
+
+    Assert.Throws<ArgumentException>(() => guest.Username = userName);
+  }
+
+  [Fact]
+  public void CanAssignAValidUsername()
+  {
+    Guest guest = new Guest();
+    string expectedUserName = "guest";
+
+    guest.Username = expectedUserName;
+
+    Assert.Equal(expectedUserName, guest.Username);
+  }
 }

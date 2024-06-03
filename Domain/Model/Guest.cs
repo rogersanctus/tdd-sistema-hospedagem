@@ -4,6 +4,7 @@ public class Guest
 {
   private string _FirstName = "";
   private string _LastName = "";
+  private string _Username = "";
 
   public string FirstName
   {
@@ -43,6 +44,25 @@ public class Guest
       }
 
       return FirstName + " " + LastName;
+    }
+  }
+
+  public string Username
+  {
+    get => _Username;
+    set
+    {
+      if (string.IsNullOrEmpty(value))
+      {
+        throw new ArgumentException("Username cannot be null or empty");
+      }
+
+      if (value.Length < 3)
+      {
+        throw new ArgumentException("Username must have at least 3 characters");
+      }
+
+      _Username = value;
     }
   }
 }
