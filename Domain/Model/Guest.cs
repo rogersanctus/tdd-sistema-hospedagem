@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace TddSistemaHospedagem.Domain.Model;
 
 public class Guest
@@ -5,6 +8,10 @@ public class Guest
   private string _FirstName = "";
   private string _LastName = "";
   private string _Username = "";
+
+  [Key]
+  [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+  public Guid Id { get; set; }
 
   public string FirstName
   {

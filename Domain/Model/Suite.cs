@@ -1,3 +1,7 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
 namespace TddSistemaHospedagem.Domain.Model;
 
 public class Suite
@@ -5,6 +9,10 @@ public class Suite
   private int _Capacity;
   private int _Number;
   private decimal _DailyPrice;
+
+  [Key]
+  [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+  public Guid Id { get; set; }
 
   public int Number
   {
@@ -34,6 +42,7 @@ public class Suite
     }
   }
 
+  [Precision(38, 4)]
   public decimal DailyPrice
   {
     get => _DailyPrice;
